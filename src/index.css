@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@font-face {
+  font-family: lato;
+  src: url('./assets/lato.regular.ttf');
+}
+:root {
+
+  font-family:lato;
+  line-height: 1.5;
+  font-weight: 400;
+  background-size: cover;
+  background-color: #121212;
+  color: aliceblue;
+  background-position: center;
+  backdrop-filter: blur(20px);
+}
