@@ -28,14 +28,18 @@ const Home = () => {
 
 
   const fetchMovieData = async (searchString) => {
-    const response = await axios.get(
-      `http://www.omdbapi.com/?s=${searchString}&apikey=${API_KEY}`
-    );
-    if (response.data && response.data.Search) {
-      setMovieList(response.data.Search);
+    try{
+      const response = await axios.get(
+        `http://www.omdbapi.com/?s=${searchString}&apikey=${API_KEY}`
+      );
+      if (response.data && response.data.Search) {
+        setMovieList(response.data.Search);
 
-    } else {
-      setMovieList([]);
+      } else {
+        setMovieList([]);
+      }}
+    catch(err){
+      console.log(err);
     }
   };
   
@@ -52,6 +56,11 @@ const Home = () => {
       console.log(err)
   }
   };
+
+  const cancel = () => {
+    setSelected(false);
+    setSelectedMovieData(null);
+  }
 
   return (
 
@@ -79,7 +88,7 @@ const Home = () => {
 
         </div>
         <movieData.Provider value={{ movieList: movieList , onClickCard: onClickCard }}>
-        {selected && <MovieInfo selectedMovieData={selectedMovieData} />}
+        {selected && <MovieInfo selectedMovieData={selectedMovieData} cancel={cancel} />}
           <CardList />
         </movieData.Provider>
 

@@ -1,9 +1,11 @@
+import { Container } from '../components/Container'
 import Footer from '../components/Footer'
 import { FaEnvelope, FaPhone, FaMapMarker, FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 
 const Contact = () => {
   return (
     <>
+    <Container>
     <div className="container mx-auto px-4 py-10">
       <h2 className="text-3xl font-bold mb-6">Contact Us</h2>
       <div className="flex items-center mb-6">
@@ -45,7 +47,10 @@ const Contact = () => {
         </a>
       </div>
     </div>
-    <Footer />
+  
+      <Footer />
+    </Container>
+    
     </>
   );
 };
