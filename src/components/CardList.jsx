@@ -6,7 +6,7 @@ const CardList = () => {
   const { movieList } = useContext(movieData);
 
   return (
-    <div className="mt-8 grid md:grid-rows-auto md:grid-cols-3 lg:grid-cols-5 mx-auto">
+    <div className="mt-8 mb-20 grid md:grid-rows-auto md:grid-cols-3 lg:grid-cols-5 mx-auto">
       {movieList?.length ? (
         movieList.map((aMovie, index) => (
           <div key={index}>

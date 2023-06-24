@@ -1,5 +1,6 @@
 import {Container} from "../components/Container"
 import CardList from "../components/CardList"
+import Footer from '../components/Footer'
 import { createContext,useEffect,useState } from "react";
 import axios from "axios";
 const API_KEY = '6cc99fc0';
@@ -65,8 +66,9 @@ const Home = () => {
           <CardList />
         </movieData.Provider>
 
-    </Container>
 
+    </Container>
+    <Footer/>
     </>
   )
 }
