@@ -10,15 +10,12 @@ This is a simple movie search app built with React. It allows users to search fo
 
 ## Installation
 
- Clone the repository:
- 
-```shell
-   git clone https://github.com/Maneth-ii/movie-search-app.git
+Clone the repository:
+git clone https://github.com/Maneth-ii/movie-search-app.git
 
-  Install dependencies:
-  ```shell
- cd movie-search-app
- npm install
+Install dependencies:
+cd movie-search-app
+npm install
 
 ## Obtain an API key from OMDb API by signing up for an account.
 
@@ -28,8 +25,6 @@ REACT_APP_API_KEY=your-api-key
 
 
 Start the development server:
-
-```shell
 npm start
 
 #Usage
@@ -37,11 +32,11 @@ npm start
 >The search results will be displayed as a list of movie cards.
 >Click on a movie card to view more details about the movie.
 
-**Technologies Used
-<:> React
-<:> Axios
-<:> HTML
-<:> CSS
+#Technologies Used
+- React
+- Axios
+- HTML
+- CSS
 
 #Contributing
 Contributions are welcome! If you find any issues or have suggestions for improvement, feel free to open an issue or submit a pull request.
