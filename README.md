@@ -12,12 +12,9 @@ This is a simple movie search app built with React. It allows users to search fo
 
  Clone the repository:
 
-   ```shell
    git clone https://github.com/Maneth-ii/movie-search-app.git
 
   Install dependencies:
-
-```shell
  cd movie-search-app
  npm install
 
