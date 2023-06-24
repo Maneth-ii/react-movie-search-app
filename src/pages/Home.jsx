@@ -1,8 +1,9 @@
 import {Container} from "../components/Container"
 import CardList from "../components/CardList"
 import Footer from '../components/Footer'
-import { createContext,useEffect,useState } from "react";
+import { createContext,useState } from "react";
 import axios from "axios";
+import MovieInfo from "../components/MovieInfo";
 const API_KEY = '6cc99fc0';
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -12,10 +13,19 @@ const Home = () => {
   const [inputQuery, setInputQuery] = useState("");
   const [timeoutId , setTimeoutId] = useState(null)
   const [movieList , setMovieList] = useState([]);
-  useEffect(() => {
-    // Fetch default movie list when the component mounts
-    fetchMovieData("the walking dead");
-  }, [])
+  const [selected , setSelected] = useState(false)
+  const [selectedMovieData , setSelectedMovieData] = useState({})
+
+  const onClickCard = async(imdbID) =>{
+    setSelected(true)
+    const IMDB_ID = imdbID
+    const response = await axios.get(`http://www.omdbapi.com/?i=${IMDB_ID}&apikey=${API_KEY}`)
+    setSelectedMovieData(response.data)
+    console.log(selectedMovieData)
+    console.log(response.data)
+    
+  }
+
 
   const fetchMovieData = async (searchString) => {
     const response = await axios.get(
@@ -23,6 +33,7 @@ const Home = () => {
     );
     if (response.data && response.data.Search) {
       setMovieList(response.data.Search);
+
     } else {
       setMovieList([]);
     }
@@ -30,11 +41,16 @@ const Home = () => {
   
 
   const onInputChange = (event) => {
-    const inputValue = event.target.value;
-    setInputQuery(inputValue);
-    clearTimeout(timeoutId);
-    const timeout = setTimeout(() => fetchMovieData(inputValue), 900);
-    setTimeoutId(timeout);
+    try{
+      const inputValue = event.target.value;
+      setInputQuery(inputValue);
+      clearTimeout(timeoutId);
+      const timeout = setTimeout(() => fetchMovieData(inputValue), 900);
+      setTimeoutId(timeout);
+
+  } catch(err){
+      console.log(err)
+  }
   };
 
   return (
@@ -62,7 +78,8 @@ const Home = () => {
           </form>
 
         </div>
-        <movieData.Provider value={{ movieList: movieList }}>
+        <movieData.Provider value={{ movieList: movieList , onClickCard: onClickCard }}>
+        {selected && <MovieInfo selectedMovieData={selectedMovieData} />}
           <CardList />
         </movieData.Provider>
 

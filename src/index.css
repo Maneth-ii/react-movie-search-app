@@ -10,7 +10,8 @@
   font-family:lato;
   line-height: 1.5;
   font-weight: 400;
-  background-size: cover;
+  background: url('./samuel-regan-asante-wMkaMXTJjlQ-unsplash.jpg');
+  background-size: contain;
   background-color: #121212;
   color: aliceblue;
   background-position: center;
