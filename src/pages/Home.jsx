@@ -19,7 +19,7 @@ const Home = () => {
   const onClickCard = async(imdbID) =>{
     setSelected(true)
     const IMDB_ID = imdbID
-    const response = await axios.get(`http://www.omdbapi.com/?i=${IMDB_ID}&apikey=${API_KEY}`)
+    const response = await axios.get(`https://www.omdbapi.com/?i=${IMDB_ID}&apikey=${API_KEY}`)
     setSelectedMovieData(response.data)
     console.log(selectedMovieData)
     console.log(response.data)
@@ -30,7 +30,7 @@ const Home = () => {
   const fetchMovieData = async (searchString) => {
     try{
       const response = await axios.get(
-        `http://www.omdbapi.com/?s=${searchString}&apikey=${API_KEY}`
+        `https://www.omdbapi.com/?s=${searchString}&apikey=${API_KEY}`
       );
       if (response.data && response.data.Search) {
         setMovieList(response.data.Search);
