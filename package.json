@@ -2,6 +2,7 @@
   "name": "mov-app",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://maneth-ii.github.io/react-movie-search-app/",
   "type": "module",
   "homepage": "https://Maneth-ii.github.io/react-movie-search-app",
   "scripts": {
@@ -17,7 +18,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
-    "react-modal": "^3.16.1"
+    "react-modal": "^3.16.1",
+    "react-router-dom": "^6.14.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.37",

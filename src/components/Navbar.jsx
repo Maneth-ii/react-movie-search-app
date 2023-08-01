@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
-import {FaReact} from "react-icons/fa"
+import { FaReact } from "react-icons/fa";
 
 const Navbar = () => {
   return (
     <nav className="bg-gray-900">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between py-6">
-        <FaReact size={40} className='absolute left-3 text-cyan-600'/>
+          <FaReact size={40} className='absolute left-3 text-cyan-600' />
           <Link to="/" className="text-3xl font-bold text-white md:ml-2 ml-10 lg:ml-10">
             Movy
           </Link>
