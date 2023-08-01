@@ -37,10 +37,10 @@ const Home = () => {
                     </svg>
                   </div>
                   <input 
+                  placeholder='Breaking Bad'
                   type="search" 
                   id="search" 
                   className="block w-full outline-none  p-4 pl-10 text-sm text-gray-900 border border-[#4e37aa] rounded-3xl bg-gray-50 focus:ring-blue-500 focus:border-[#4e37aa] dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#4e37aa] dark:focus:border-[#4e37aa]" 
-                  placeholder="Search Movie or TV series" 
                   required
                   onChange={onInputChange}
                   value={inputQuery}
