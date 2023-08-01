@@ -1,55 +1,24 @@
 import {Container} from "../components/Container"
 import CardList from "../components/CardList"
 import Footer from '../components/Footer'
-import { createContext,useState } from "react";
-import axios from "axios";
+import { useState } from "react";
 import MovieInfo from "../components/MovieInfo";
-const API_KEY = '6cc99fc0';
-
-// eslint-disable-next-line react-refresh/only-export-components
-export const movieData = createContext(null);
+import { useMovieContext } from "../contexts/movieContext";
 
 const Home = () => {
   const [inputQuery, setInputQuery] = useState("");
   const [timeoutId , setTimeoutId] = useState(null)
-  const [movieList , setMovieList] = useState([]);
-  const [selected , setSelected] = useState(false)
-  const [selectedMovieData , setSelectedMovieData] = useState({})
 
-  const onClickCard = async(imdbID) =>{
-    setSelected(true)
-    const IMDB_ID = imdbID
-    const response = await axios.get(`https://www.omdbapi.com/?i=${IMDB_ID}&apikey=${API_KEY}`)
-    setSelectedMovieData(response.data)
-    console.log(selectedMovieData)
-    console.log(response.data)
-    
-  }
-
-
-  const fetchMovieData = async (searchString) => {
-    try{
-      const response = await axios.get(
-        `https://www.omdbapi.com/?s=${searchString}&apikey=${API_KEY}`
-      );
-      if (response.data && response.data.Search) {
-        setMovieList(response.data.Search);
-
-      } else {
-        setMovieList([]);
-      }}
-    catch(err){
-      console.log(err);
-    }
-  };
-  
+  const { movieList, selected, selectedMovieData, fetchMovieData, onClickCard, cancel } = useMovieContext();
 
   const onInputChange = (event) => {
     try{
       const inputValue = event.target.value;
       setInputQuery(inputValue);
       clearTimeout(timeoutId);
-      const timeout = setTimeout(() => fetchMovieData(inputValue), 900);
+      const timeout = setTimeout(() =>{
+         fetchMovieData(inputValue)
+        }, 900);
       setTimeoutId(timeout);
 
   } catch(err){
@@ -57,14 +26,7 @@ const Home = () => {
   }
   };
 
-  const cancel = () => {
-    setSelected(false);
-    setSelectedMovieData(null);
-  }
-
-  return (
-
-    <>
+  return (<>
    <Container>
         <div className="mx-auto w-[60%] text-center mt-8 rounded-md">
            
@@ -87,10 +49,8 @@ const Home = () => {
           </form>
 
         </div>
-        <movieData.Provider value={{ movieList: movieList , onClickCard: onClickCard }}>
         {selected && <MovieInfo selectedMovieData={selectedMovieData} cancel={cancel} />}
-          <CardList />
-        </movieData.Provider>
+          <CardList onClickCard={onClickCard} movieList={movieList} />
 
 
     </Container>
