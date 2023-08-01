@@ -1,11 +1,6 @@
 /* eslint-disable react/prop-types */
-import { useContext } from "react";
-import { movieData } from "../pages/Home";
+const Card = ({ aMovie,onClickCard }) => {
 
-
-const Card = ({ aMovie }) => {
-
-  const {onClickCard} = useContext(movieData)
 
     return (
       <div onClick={() => onClickCard(aMovie.imdbID)} className='w-[15rem] p-2 box-border md:w-[14rem] relative rounded-lg mt-6 bg-black cursor-pointer  shadow-slate-300 h-[24rem] mx-auto'>
