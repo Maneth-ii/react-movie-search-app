@@ -2,7 +2,6 @@
   "name": "mov-app",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://maneth-ii.github.io/react-movie-search-app/",
   "type": "module",
   "homepage": "https://Maneth-ii.github.io/react-movie-search-app",
   "scripts": {
