@@ -42,8 +42,11 @@ export const useMovieContext = () => {
       setSelectedMovieData(response.data);
       console.log(selectedMovieData);
       console.log(response.data);
+    
+      // Scroll to the top of the page
+      window.scrollTo({ top: 0, behavior: "smooth" });
     };
-  
+    
     const cancel = () => {
       setSelected(false);
       setSelectedMovieData(null);
