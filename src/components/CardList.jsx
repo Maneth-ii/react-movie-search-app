@@ -14,7 +14,10 @@ const CardList = ({movieList,onClickCard} ) => {
           </div>
         ))
       ) : (
-        <h1 className="text-center">Not Found!</h1>
+        <div className="col-span-5 mx-auto ">
+          <h1 className="text-cyan-500  mx-auto text-4xl  text-center mt-10">Explore the World of Movies</h1>
+          <p className=" w-[50%] mx-auto mt-10">MovieFlix is a comprehensive movie and TV series discovery platform that caters to every cinephile's cravings. With an extensive collection of films from various genres and eras, MovieFlix offers a seamless experience for users to explore, discover, and indulge in the captivating world of cinema.</p>
+        </div>
       )}
     </div>
   );

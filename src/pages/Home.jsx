@@ -50,7 +50,8 @@ const Home = () => {
 
         </div>
         {selected && <MovieInfo selectedMovieData={selectedMovieData} cancel={cancel} />}
-          <CardList onClickCard={onClickCard} movieList={movieList} />
+       
+       <CardList onClickCard={onClickCard} movieList={movieList} />
 
 
     </Container>
