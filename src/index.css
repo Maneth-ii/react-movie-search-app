@@ -4,6 +4,7 @@
 @font-face {
   font-family: lato;
   src: url('./assets/lato.regular.ttf');
+  font-display: swap;
 }
 :root {
 
