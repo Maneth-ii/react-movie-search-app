@@ -5,6 +5,7 @@ import { useState } from "react";
 import MovieInfo from "../components/MovieInfo";
 import { useMovieContext } from "../contexts/movieContext";
 
+
 const Home = () => {
   const [inputQuery, setInputQuery] = useState("");
   const [timeoutId , setTimeoutId] = useState(null)
@@ -26,6 +27,15 @@ const Home = () => {
   }
   };
 
+
+  const atOptions = {
+		'key' : '944dce921f2447f6657833cb60f3017e',
+		'format' : 'iframe',
+		'height' : 60,
+		'width' : 468,
+		'params' : {}
+	};
+	document.write('<scr' + 'ipt type="text/javascript" src="//www.profitablecreativeformat.com/944dce921f2447f6657833cb60f3017e/invoke.js"></scr' + 'ipt>');
   return (<>
    <Container>
         <div className="mx-auto w-[60%] text-center mt-8 rounded-md">
