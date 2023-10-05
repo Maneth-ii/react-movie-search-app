@@ -1,6 +1,7 @@
 import {Container} from "../components/Container"
 import CardList from "../components/CardList"
 import Footer from '../components/Footer'
+import Loader from '../components/Loader'
 import { useState } from "react";
 import MovieInfo from "../components/MovieInfo";
 import { useMovieContext } from "../contexts/movieContext";
@@ -8,41 +9,34 @@ import { useMovieContext } from "../contexts/movieContext";
 
 const Home = () => {
   const [inputQuery, setInputQuery] = useState("");
-  const [timeoutId , setTimeoutId] = useState(null)
-
-  const { movieList, selected, selectedMovieData, fetchMovieData, onClickCard, cancel } = useMovieContext();
+  const {isFetching, movieList, selected, selectedMovieData, fetchMovieData, onClickCard, cancel } = useMovieContext();
 
   const onInputChange = (event) => {
     try{
       const inputValue = event.target.value;
       setInputQuery(inputValue);
-      clearTimeout(timeoutId);
-      const timeout = setTimeout(() =>{
-         fetchMovieData(inputValue)
-        }, 900);
-      setTimeoutId(timeout);
-
   } catch(err){
       console.log(err)
   }
   };
 
+  const onSubmitForm =(e) => {
+    e.preventDefault()
+    try {
+      fetchMovieData(inputQuery)
+    } catch (error) {
+      console.log(error)
+    }
+  } 
 
-  const atOptions = {
-		'key' : '944dce921f2447f6657833cb60f3017e',
-		'format' : 'iframe',
-		'height' : 60,
-		'width' : 468,
-		'params' : {}
-	};
-	document.write('<scr' + 'ipt type="text/javascript" src="//www.profitablecreativeformat.com/944dce921f2447f6657833cb60f3017e/invoke.js"></scr' + 'ipt>');
-  return (<>
+
+ return (<>
    <Container>
         <div className="mx-auto w-[60%] text-center mt-8 rounded-md">
            
-          <form>
+          <form onSubmit={onSubmitForm}>
               <div className="relative">
-                  <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                  <div className="absolute top-[1rem] left-0 flex items-center pl-3 pointer-events-none">
                     <svg aria-hidden="true" className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                     </svg>
                   </div>
@@ -55,13 +49,14 @@ const Home = () => {
                   onChange={onInputChange}
                   value={inputQuery}
                   />
-              </div>
+                  {isFetching? <Loader/> : <input type="submit" value={"Search"} className="cursor-pointer dark:bg-gray-700 px-3 py-1 rounded-xl mt-3 hover:shadow-md active:focus:scale-75" />
+              }</div>
           </form>
 
         </div>
         {selected && <MovieInfo selectedMovieData={selectedMovieData} cancel={cancel} />}
        
-       <CardList onClickCard={onClickCard} movieList={movieList} />
+        <CardList onClickCard={onClickCard} movieList={movieList} />
 
 
     </Container>

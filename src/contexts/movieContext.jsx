@@ -13,17 +13,21 @@ export const useMovieContext = () => {
   
   // eslint-disable-next-line react/prop-types
   export const MovieProvider = ({ children }) => {
+    
+    const [isFetching , setIsFetching] = useState(false);
     const [movieList, setMovieList] = useState([]);
     const [selectedMovieData, setSelectedMovieData] = useState({});
     const [selected, setSelected] = useState(false);
   
     const fetchMovieData = async (searchString) => {
       try {
+        setIsFetching(true)
         const response = await axios.get(
           `https://www.omdbapi.com/?s=${searchString}&apikey=${API_KEY}`
         );
         if (response.data && response.data.Search) {
           setMovieList(response.data.Search);
+          setIsFetching(false)
           localStorage.setItem("movies", JSON.stringify(response.data.Search));
         } else {
           setMovieList([]);
@@ -54,6 +58,7 @@ export const useMovieContext = () => {
   
     // Pass the necessary data and functions through the context provider
     const contextValue = {
+      isFetching,
       movieList,
       selected,
       selectedMovieData,
