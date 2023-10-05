@@ -2,7 +2,7 @@ import { createContext, useState, useContext } from "react";
 import axios from "axios";
 
 // Replace 'YOUR_API_KEY' with your actual API key
-const API_KEY = '6cc99fc0';
+const API_KEY = import.meta.env.OMDB_APP_API_KEY;
 
 const MovieContext = createContext();
 
