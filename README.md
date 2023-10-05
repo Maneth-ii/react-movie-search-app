@@ -19,3 +19,36 @@ git clone https://github.com/Maneth-ii/movie-search-app.git
 
 ## Navigate to the Project Directory
 cd movie-search-app
+
+##Install Dependencies
+npm install
+```
+
+## Obtain an API Key
+Sign up for an account on the OMDb API and obtain your API key.
+
+## Create Environment Variable
+Create a .env file in the root directory and add your API key:
+
+```bash
+REACT_APP_API_KEY=your-api-key
+```
+
+## Start the Development Server
+
+```bash
+npm run dev
+```
+
+# Technologies Used
+- React
+- React Router Dom
+- Axios
+# Contributing
+
+# Contributions are encouraged! If you encounter issues or have suggestions for improvement, please feel free to:
+- Open an issue.
+- Submit a pull request.
+
+Let's work together to make this app even better!
+
