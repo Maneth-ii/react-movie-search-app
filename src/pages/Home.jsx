@@ -9,7 +9,12 @@ import { useMovieContext } from "../contexts/movieContext";
 
 const Home = () => {
   const [inputQuery, setInputQuery] = useState("");
-  const {isFetching, movieList, selected, selectedMovieData, fetchMovieData, onClickCard, cancel } = useMovieContext();
+  const {isFetching, movieList, selected, selectedMovieData, fetchMovieData, onClickCard, cancel, resetAll } = useMovieContext();
+
+  const handleResetAll = () => {
+    setInputQuery("");
+    resetAll();
+  };
 
   const onInputChange = (event) => {
     try{

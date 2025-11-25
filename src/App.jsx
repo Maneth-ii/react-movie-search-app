@@ -7,17 +7,16 @@ import { MovieProvider } from "./contexts/movieContext";
 
 
 const App = () => (
- <>
-  <Navbar/>
-
-  <MovieProvider>
+ <MovieProvider>
+  <>
+    <Navbar/>
     <Routes>
       <Route path="/" element={<Home/>}/>
       <Route path="/about" element={<About/>}/>
       <Route path="/contact" element={<Contact/>}/>
     </Routes>
-  </MovieProvider>
-</>
+  </>
+ </MovieProvider>
 );
 
 export default App;

@@ -56,6 +56,14 @@ export const useMovieContext = () => {
       setSelected(false);
       setSelectedMovieData(null);
     };
+    
+    const resetAll = () => {
+      setMovieList([]);
+      setSelectedMovieData({});
+      setSelected(false);
+      setIsFetching(false);
+      localStorage.removeItem("movies");
+    };
   
     // Pass the necessary data and functions through the context provider
     const contextValue = {
@@ -66,6 +74,7 @@ export const useMovieContext = () => {
       fetchMovieData,
       onClickCard,
       cancel,
+      resetAll,
     };
   
     return (
